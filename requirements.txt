@@ -3,4 +3,4 @@ scikit-learn
 matplotlib
 pandas
 folium
-scipy.stats
+scipy
