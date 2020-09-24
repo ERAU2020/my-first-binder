@@ -8,13 +8,16 @@ Created on Mon Feb 24 14:36:53 2020
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-import pandas_profiling
+# import pandas_profiling
 import statsmodels.api as sm
 from sklearn.metrics import r2_score
+
 
 # initialize x as a range of values from -10 to 10
 x = np.arange(-10,10+1,1)  # x = -10:10
 y = 0.7*x -2
+
+
 
 
 x.shape=-1,1
@@ -28,10 +31,12 @@ model.fit(x,y)
 
 #plot the regression line
 plt.plot(x, model.predict(x), color='r')
+plt.plot(0,0, 'b.')
 plt.title('y=0.7x - 2')
 plt.xlabel('x fixed -10..10')
 plt.ylabel('y f(x)')
 plt.grid(True)
+plt.show()
 
 print('MODEL:\n y = ' + str(model.coef_) + "* x +" + str(model.intercept_))
 print('R-squared: ' + str(r2_score(y, model.predict(x))))
@@ -61,9 +66,8 @@ b = (x.size*np.array(x*y).sum() -  x.sum() * y.sum()) / ( x.size*np.array(x*x).s
 print("y=", b, "*x + ", a)
 model.score(x,y)
 
-# you fix for Correlation Coefficient ->
+# write fix for Correlation Coefficient ->
 # https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/correlation-coefficient-formula/
-
 # compute R like I did ax+b above using the numpy arrays...
 
 
