@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-sleepee = 0.8;
+sleepee = 2;
 radius = 6;
 area   = np.pi * np.power(radius, 2);
 
@@ -34,7 +34,7 @@ area   = np.pi * np.power(radius, 2);
 #if theta==0: x=radius;
 # x = radius * np.cos(np.degrees2radians(theta))
 # y = radius * np.sin(n)
-theta = np.arange(0,360+1,10)
+theta = np.arange(0,360+1,30)
 y = radius * np.sin(np.deg2rad(theta))
 x = radius * np.cos(np.deg2rad(theta))
 print(np.c_[theta, x, y])
@@ -48,7 +48,8 @@ for i in range(len(x)):
   plt.plot([0,x[i]],[0,y[i]], 'k')
   plt.plot([0,x[i]],[0,y[i]], 'k*')
   plt.show()
-  time.sleep(sleepee)
+  print('Theta: %.2f Degrees, %.3f Radians  (%.3f, %.3f)' % (theta[i], np.deg2rad(theta[i]), x[i], y[i]))
+  time.sleep(sleepee) 
   
   
 #  sleep
