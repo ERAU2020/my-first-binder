@@ -12,29 +12,17 @@ import time
 sleepee = 2;
 radius = 6;
 area   = np.pi * np.power(radius, 2);
-
-# how to plot a circle?
-
-# alternatives?
-
-# use Jupyter Notebook
-
-# use an IPyWidget to implement the code below without screen flutter
-
-# start a github at github.com
-# for now:  github.com/ERAU2020/myfirstproject/alani_project.py
-# get another person to join it
-
 # circumference
-
+# how to plot a circle?
+# alternatives?
+# use Jupyter Notebook
+# use an IPyWidget to implement the code below without screen flutter
+# start a github at github.com
+# for now:  https://github.com/ERAU2020/my-first-binder   alani_project.py
+# get another person to join it
 # draw a * around the circumference, and refresh the screen show 
 
-#print(theta, x, y, radius)
-# for theta in (range(0,361, 10))
-#if theta==0: x=radius;
-# x = radius * np.cos(np.degrees2radians(theta))
-# y = radius * np.sin(n)
-theta = np.arange(0,360+1,30)
+theta = np.arange(0,360+1,15)
 y = radius * np.sin(np.deg2rad(theta))
 x = radius * np.cos(np.deg2rad(theta))
 print(np.c_[theta, x, y])
