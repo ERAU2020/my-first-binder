@@ -49,3 +49,30 @@ x1 = np.arange(0, 30, 0.01)
 y1 = [sigmoid(n) for n in x1]
 plt.plot(x1,y1)
 plt.show()
+
+radius = 20
+print('For Radius: %.2f' % radius)
+print(log_regress.predict_proba([[radius]])) 
+print(log_regress.predict([[radius]])[0])    
+
+radius = 17
+print('For Radius: %.2f' % radius)
+print(log_regress.predict_proba([[radius]])) 
+print(log_regress.predict([[radius]])[0])    
+
+radius = 14
+print('For Radius: %.2f' % radius)
+print(log_regress.predict_proba([[radius]])) 
+print(log_regress.predict([[radius]])[0])    
+
+radius = 11
+print('For Radius: %.2f' % radius)
+print(log_regress.predict_proba([[radius]])) 
+print(log_regress.predict([[radius]])[0])    
+
+
+#---print trained model intercept---
+print('0-malignant, 1-benign')
+print(log_regress.intercept_)
+#---print trained model coefficients---
+print(log_regress.coef_)
