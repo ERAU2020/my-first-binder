@@ -35,6 +35,9 @@ for i in range(len(x)):
   plt.axis('Equal')
   plt.plot([0,x[i]],[0,y[i]], 'k')
   plt.plot([0,x[i]],[0,y[i]], 'k*')
+  
+  # plot the vertical line of the triangle
+  plt.plot([x[i],x[i]],[0,y[i]], 'k')
   plt.show()
   print('Theta: %.2f Degrees, %.3f Radians  (%.3f, %.3f)' % (theta[i], np.deg2rad(theta[i]), x[i], y[i]))
   time.sleep(sleepee) 
