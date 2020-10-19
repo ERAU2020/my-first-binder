@@ -28,6 +28,7 @@ plt.ylabel("Result")
 plt.legend(handles=[red, blue], loc=1)
 plt.show()
 
+
 # end of page 161
 
 # page 162
@@ -81,7 +82,7 @@ print('For Radius: %.2f' % radius)
 print(log_regress.predict_proba([[radius]])) 
 print(log_regress.predict([[radius]])[0])    
 
-
+radius = 15.12
 radius = log_regress.intercept_[0]
 print('For Radius: %.2f' % radius)
 print(log_regress.predict_proba([[radius]])) 
@@ -149,7 +150,14 @@ for rad in range(min_actual_radius, math.ceil(max_actual_radius)+1):
     dominate_class = 0
     if num_records_class_1 > num_records_class_0:
         dominate_class = 1
+        
+    pc0 = np.nan
+    pc1 = np.nan
+    
+    if num_records > 0:
+        pc0 = num_records_class_0 / num_records
+        pc1 = num_records_class_1 / num_records
     
     #actual_class = np.nan
-    print('%3d %3d %d (%2d, %2d)' % (rad, num_records, dominate_class, num_records_class_0, num_records_class_1))
+    print('%3d %3d %d (%2d, %2d) [%.3f, %.3f]' % (rad, num_records, dominate_class, num_records_class_0, num_records_class_1, pc0, pc1))
   
