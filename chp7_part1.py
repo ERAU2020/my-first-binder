@@ -61,6 +61,7 @@ plt.show()
 log_regress = linear_model.LogisticRegression()
 # train model
 log_regress.fit(X = np.array(x).reshape(len(x),1), y = y)
+# log_regress.fit(X=x, y=y)
 
 #---print trained model intercept---
 print(log_regress.intercept_)
@@ -219,12 +220,45 @@ tp = 0     # true positive, predict malignant class 1, actual data is malignant 
 actual_class = np.nan
 predicted_class = np.nan
 
+print('i\tradius\t[prob c0, prob c1], pred_class, actual_class, pred_type\n')
+for i in range(len(df)):
+  radius = df.loc[i]['mean radius']
+  act_class = df.loc[i]['CLASS']
+  p0, p1 = log_regress.predict_proba([[radius]])[0]
+  pred_class = log_regress.predict([[radius]])[0]
+  
+  pred_type = ''  
+  if pred_class == 0 and act_class == 0:
+      tn = tn+1
+      pred_type = 'TN'
+  elif pred_class == 0 and act_class == 1:
+      pred_type = 'FN'
+      fn = fn + 1
+  elif pred_class == 1 and act_class == 0:
+      fp = fp + 1
+      pred_type = 'FP'
+  elif pred_class == 1 and act_class == 1:
+      tp = tp + 1
+      pred_type = 'TP'
+  else:
+      print('Problem on element %d not a pred_type, impossible...', i)
+      #raise.error 1
+
+  print('%3d\t%.3f\t[%.3f, %.3f]\t%3d\t%3d\t%s' % (i, radius, p0, p1, pred_class, act_class, pred_type))
 
 # display the matrix
 print('\nContingency Matrix')
+# row 1 is for predictions of class 0, the negative class predictions (predict benign)
 print('TN=%3d\tFN=%3d' % (tn, fn))
-print('FP=%3d\tTN=%3d' % (fp, tp))
+# row 2 is for the predictions of class 1 - the positive cancer predictions (predict malignant)
+print('FP=%3d\tTP=%3d' % (fp, tp))
 # compute the metrics
+accuracy = (tp + tn)/(tp+tn+fp+fn)
+precision = tp / (tp + fp)
+recall = tp/(tp + fn)
 
+print('Accuracy: %.3f' % accuracy)
+print('Precision: %.3f' % precision)
+print('Recall: %.3f' % recall)
 
 # this contingency data is used to compute precision, accuracy, and recall measures
